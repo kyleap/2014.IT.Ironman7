@@ -23,11 +23,11 @@ namespace CMS.BLL.Services
 
         /// <summary>取得所有客戶資料</summary>
         /// <returns></returns>
-        public IQueryable<CustomerViewModel> Get()
+        public List<CustomerViewModel> Get()
         {
-            var DbResult = db.Get().AsQueryable();
+            var DbResult = db.Get().ToList();
             Mapper.CreateMap<Customers, CustomerViewModel>();
-            return Mapper.Map<IQueryable<Customers>, IQueryable<CustomerViewModel>>(DbResult);
+            return Mapper.Map<List<Customers>, List<CustomerViewModel>>(DbResult);
         }
 
 

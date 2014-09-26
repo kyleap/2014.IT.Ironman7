@@ -1,0 +1,195 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<doc>
+  <assembly>
+    <name>System.Web.Http.Owin</name>
+  </assembly>
+  <members>
+    <member name="T:System.Net.Http.OwinHttpRequestMessageExtensions">
+      <summary>提供 <see cref="T:System.Net.Http.HttpRequestMessage" /> 類別的擴充方法。</summary>
+    </member>
+    <member name="M:System.Net.Http.OwinHttpRequestMessageExtensions.GetOwinContext(System.Net.Http.HttpRequestMessage)">
+      <summary>取得指定要求的 OWIN 內容。</summary>
+      <returns>若可用，則為指定內容的 OWIN 環境，否則為 <see cref="null" />。</returns>
+      <param name="request">HTTP 要求的訊息。</param>
+    </member>
+    <member name="M:System.Net.Http.OwinHttpRequestMessageExtensions.GetOwinEnvironment(System.Net.Http.HttpRequestMessage)">
+      <summary>取得指定要求的 OWIN 環境。</summary>
+      <returns>若可用，則為指定要求的 OWIN 環境，否則為 <see cref="null" />。</returns>
+      <param name="request">HTTP 要求的訊息。</param>
+    </member>
+    <member name="M:System.Net.Http.OwinHttpRequestMessageExtensions.SetOwinContext(System.Net.Http.HttpRequestMessage,Microsoft.Owin.IOwinContext)">
+      <summary>設定指定要求的 OWIN 內容。</summary>
+      <param name="request">HTTP 要求的訊息。</param>
+      <param name="context">要設定的 OWIN 內容。</param>
+    </member>
+    <member name="M:System.Net.Http.OwinHttpRequestMessageExtensions.SetOwinEnvironment(System.Net.Http.HttpRequestMessage,System.Collections.Generic.IDictionary{System.String,System.Object})">
+      <summary>設定指定要求的 OWIN 環境。</summary>
+      <param name="request">HTTP 要求的訊息。</param>
+      <param name="environment">要設定的 OWIN 環境。</param>
+    </member>
+    <member name="T:System.Web.Http.HostAuthenticationAttribute">
+      <summary>表示透過 OWIN 中介軟體驗證的驗證屬性。</summary>
+    </member>
+    <member name="M:System.Web.Http.HostAuthenticationAttribute.#ctor(System.String)">
+      <summary>初始化 <see cref="T:System.Web.Http.HostAuthenticationAttribute" /> 類別的新執行個體。</summary>
+      <param name="authenticationType">OWIN 中介軟體要使用的驗證類型。</param>
+    </member>
+    <member name="P:System.Web.Http.HostAuthenticationAttribute.AllowMultiple"></member>
+    <member name="M:System.Web.Http.HostAuthenticationAttribute.AuthenticateAsync(System.Web.Http.Filters.HttpAuthenticationContext,System.Threading.CancellationToken)"></member>
+    <member name="P:System.Web.Http.HostAuthenticationAttribute.AuthenticationType">
+      <summary>取得 OWIN 中介軟體要使用的驗證類型。</summary>
+    </member>
+    <member name="M:System.Web.Http.HostAuthenticationAttribute.ChallengeAsync(System.Web.Http.Filters.HttpAuthenticationChallengeContext,System.Threading.CancellationToken)"></member>
+    <member name="T:System.Web.Http.HostAuthenticationFilter">
+      <summary>表示透過 OWIN 中介軟體驗證的驗證篩選條件。</summary>
+    </member>
+    <member name="M:System.Web.Http.HostAuthenticationFilter.#ctor(System.String)">
+      <summary>初始化 <see cref="T:System.Web.Http.HostAuthenticationFilter" /> 類別的新執行個體。</summary>
+      <param name="authenticationType">OWIN 中介軟體要使用的驗證類型。</param>
+    </member>
+    <member name="P:System.Web.Http.HostAuthenticationFilter.AllowMultiple">
+      <summary>取得值，這個值表示篩選條件是否允許多次驗證。</summary>
+      <returns>如果篩選條件允許多次驗證，則為 true，否則為 false。</returns>
+    </member>
+    <member name="M:System.Web.Http.HostAuthenticationFilter.AuthenticateAsync(System.Web.Http.Filters.HttpAuthenticationContext,System.Threading.CancellationToken)">
+      <summary>非同步驗證要求。</summary>
+      <returns>完成驗證的工作。</returns>
+      <param name="context">驗證內容。</param>
+      <param name="cancellationToken">取消權杖。</param>
+    </member>
+    <member name="P:System.Web.Http.HostAuthenticationFilter.AuthenticationType">
+      <summary>取得 OWIN 中介軟體要使用的驗證類型。</summary>
+      <returns>OWIN 中介軟體要使用的驗證類型。</returns>
+    </member>
+    <member name="M:System.Web.Http.HostAuthenticationFilter.ChallengeAsync(System.Web.Http.Filters.HttpAuthenticationChallengeContext,System.Threading.CancellationToken)">
+      <summary>非同步挑戰驗證。</summary>
+      <returns>完成挑戰的工作。</returns>
+      <param name="context">內容。</param>
+      <param name="cancellationToken">取消權杖。</param>
+    </member>
+    <member name="T:System.Web.Http.OwinHttpConfigurationExtensions">
+      <summary>提供 <see cref="T:System.Web.Http.HttpConfiguration" /> 類別的擴充方法。</summary>
+    </member>
+    <member name="M:System.Web.Http.OwinHttpConfigurationExtensions.SuppressDefaultHostAuthentication(System.Web.Http.HttpConfiguration)">
+      <summary>啟用主機的預設驗證隱藏。</summary>
+      <param name="configuration">伺服器組態。</param>
+    </member>
+    <member name="T:System.Web.Http.Owin.HttpMessageHandlerAdapter">
+      <summary>表示叫用時提交要求至 <see cref="T:System.Net.Http.HttpMessageHandler" /> 的 OWIN 元件。</summary>
+    </member>
+    <member name="M:System.Web.Http.Owin.HttpMessageHandlerAdapter.#ctor(Microsoft.Owin.OwinMiddleware,System.Net.Http.HttpMessageHandler,System.Web.Http.Hosting.IHostBufferPolicySelector)">
+      <summary>初始化 <see cref="T:System.Web.Http.Owin.HttpMessageHandlerAdapter" /> 類別的新執行個體。</summary>
+      <param name="next">管線中的下一個元件。</param>
+      <param name="messageHandler">要提交要求的 <see cref="T:System.Net.Http.HttpMessageHandler" />。</param>
+      <param name="bufferPolicySelector">判斷緩衝要求和回應的 <see cref="T:System.Web.Http.Hosting.IHostBufferPolicySelector" />。</param>
+    </member>
+    <member name="M:System.Web.Http.Owin.HttpMessageHandlerAdapter.#ctor(Microsoft.Owin.OwinMiddleware,System.Web.Http.Owin.HttpMessageHandlerOptions)">
+      <summary>初始化 <see cref="T:System.Web.Http.Owin.HttpMessageHandlerAdapter" /> 類別的新執行個體。</summary>
+      <param name="next">管線中的下一個元件。</param>
+      <param name="options">用來設定這個配接器的選項。</param>
+    </member>
+    <member name="P:System.Web.Http.Owin.HttpMessageHandlerAdapter.AppDisposing">
+      <summary>取得觸發清除此元件的取消權杖。</summary>
+      <returns>取消權杖。</returns>
+    </member>
+    <member name="P:System.Web.Http.Owin.HttpMessageHandlerAdapter.BufferPolicySelector">
+      <summary>取得判斷緩衝要求和回應的 <see cref="T:System.Web.Http.Hosting.IHostBufferPolicySelector" />。</summary>
+      <returns>判斷緩衝要求和回應的 <see cref="T:System.Web.Http.Hosting.IHostBufferPolicySelector" />。</returns>
+    </member>
+    <member name="M:System.Web.Http.Owin.HttpMessageHandlerAdapter.Dispose">
+      <summary>將 <see cref="T:System.Web.Http.Owin.HttpMessageHandlerAdapter" /> 類別目前的執行個體所使用的資源全部釋出。</summary>
+    </member>
+    <member name="M:System.Web.Http.Owin.HttpMessageHandlerAdapter.Dispose(System.Boolean)">
+      <summary>釋放 Unmanaged 資源並選擇性釋放 Managed 資源。</summary>
+      <param name="disposing">true 表示釋放 Managed 和 Unmanaged 資源，false 則表示只釋放 Unmanaged 資源。</param>
+    </member>
+    <member name="P:System.Web.Http.Owin.HttpMessageHandlerAdapter.ExceptionHandler">
+      <summary>取得要用於處理未處理例外狀況的 <see cref="T:System.Web.Http.ExceptionHandling.IExceptionHandler" />。</summary>
+      <returns>要用於處理未處理例外狀況的 <see cref="T:System.Web.Http.ExceptionHandling.IExceptionHandler" />。</returns>
+    </member>
+    <member name="P:System.Web.Http.Owin.HttpMessageHandlerAdapter.ExceptionLogger">
+      <summary>取得要用於記錄未處理例外狀況的 <see cref="T:System.Web.Http.ExceptionHandling.IExceptionLogger" />。</summary>
+      <returns>要用於記錄未處理例外狀況的 <see cref="T:System.Web.Http.ExceptionHandling.IExceptionLogger" />。</returns>
+    </member>
+    <member name="M:System.Web.Http.Owin.HttpMessageHandlerAdapter.Invoke(Microsoft.Owin.IOwinContext)">
+      <returns>傳回 <see cref="T:System.Threading.Tasks.Task" />。</returns>
+    </member>
+    <member name="P:System.Web.Http.Owin.HttpMessageHandlerAdapter.MessageHandler">
+      <summary>取得要提交要求的 <see cref="T:System.Net.Http.HttpMessageHandler" />。</summary>
+      <returns>要提交要求的 <see cref="T:System.Net.Http.HttpMessageHandler" />。</returns>
+    </member>
+    <member name="T:System.Web.Http.Owin.HttpMessageHandlerOptions">
+      <summary>表示設定 <see cref="T:System.Web.Http.Owin.HttpMessageHandlerAdapter" /> 的選項。</summary>
+    </member>
+    <member name="M:System.Web.Http.Owin.HttpMessageHandlerOptions.#ctor">
+      <summary>初始化 <see cref="T:System.Web.Http.Owin.HttpMessageHandlerOptions" /> 類別的新執行個體。</summary>
+    </member>
+    <member name="P:System.Web.Http.Owin.HttpMessageHandlerOptions.AppDisposing">
+      <summary>取得或設定觸發清除 <see cref="T:System.Web.Http.Owin.HttpMessageHandlerAdapter" /> 的 <see cref="T:System.Threading.CancellationToken" />。</summary>
+      <returns>觸發清除 <see cref="T:System.Web.Http.Owin.HttpMessageHandlerAdapter" /> 的 <see cref="T:System.Threading.CancellationToken" />。</returns>
+    </member>
+    <member name="P:System.Web.Http.Owin.HttpMessageHandlerOptions.BufferPolicySelector">
+      <summary>取得或設定判斷緩衝要求和回應的 <see cref="T:System.Web.Http.Hosting.IHostBufferPolicySelector" />。</summary>
+      <returns>判斷緩衝要求和回應的 <see cref="T:System.Web.Http.Hosting.IHostBufferPolicySelector" />。</returns>
+    </member>
+    <member name="P:System.Web.Http.Owin.HttpMessageHandlerOptions.ExceptionHandler">
+      <summary>取得或設定要用於處理未處理例外狀況的 <see cref="T:System.Web.Http.ExceptionHandling.IExceptionHandler" />。</summary>
+      <returns>要用於處理未處理例外狀況的 <see cref="T:System.Web.Http.ExceptionHandling.IExceptionHandler" />。</returns>
+    </member>
+    <member name="P:System.Web.Http.Owin.HttpMessageHandlerOptions.ExceptionLogger">
+      <summary>取得或設定要用於記錄未處理例外狀況的 <see cref="T:System.Web.Http.ExceptionHandling.IExceptionLogger" />。</summary>
+      <returns>要用於記錄未處理例外狀況的 <see cref="T:System.Web.Http.ExceptionHandling.IExceptionLogger" />。</returns>
+    </member>
+    <member name="P:System.Web.Http.Owin.HttpMessageHandlerOptions.MessageHandler">
+      <summary>取得或設定要提交要求的 <see cref="T:System.Net.Http.HttpMessageHandler" />。</summary>
+      <returns>要提交要求的 <see cref="T:System.Net.Http.HttpMessageHandler" />。</returns>
+    </member>
+    <member name="T:System.Web.Http.Owin.OwinBufferPolicySelector">
+      <summary>提供由 OWIN Web API 配接器使用的 <see cref="T:System.Web.Http.Hosting.IHostBufferPolicySelector" /> 預設實作。</summary>
+    </member>
+    <member name="M:System.Web.Http.Owin.OwinBufferPolicySelector.#ctor">
+      <summary>初始化 <see cref="T:System.Web.Http.Owin.OwinBufferPolicySelector" /> 類別的新執行個體。</summary>
+    </member>
+    <member name="M:System.Web.Http.Owin.OwinBufferPolicySelector.UseBufferedInputStream(System.Object)">
+      <summary>判斷主機是否應緩衝 HttpRequestMessage 實體主體。</summary>
+      <returns>如果應使用緩衝，則為 true，否則應使用串流的要求。</returns>
+      <param name="hostContext">主機內容。</param>
+    </member>
+    <member name="M:System.Web.Http.Owin.OwinBufferPolicySelector.UseBufferedOutputStream(System.Net.Http.HttpResponseMessage)">
+      <summary>判斷主機是否應緩衝 HttpResponseMessage 實體主體。</summary>
+      <returns>如果應使用緩衝，則為 true，否則應使用串流的回應。</returns>
+      <param name="response">回應。</param>
+    </member>
+    <member name="T:System.Web.Http.Owin.OwinExceptionCatchBlocks">
+      <summary>提供此組件中使用的捕捉區塊。</summary>
+    </member>
+    <member name="P:System.Web.Http.Owin.OwinExceptionCatchBlocks.HttpMessageHandlerAdapterBufferContent">
+      <summary>取得 System.Web.Http.Owin.HttpMessageHandlerAdapter.BufferContent 中的捕捉區塊。</summary>
+      <returns>System.Web.Http.Owin.HttpMessageHandlerAdapter.BufferContent 中的捕捉區塊。</returns>
+    </member>
+    <member name="P:System.Web.Http.Owin.OwinExceptionCatchBlocks.HttpMessageHandlerAdapterBufferError">
+      <summary>取得 System.Web.Http.Owin.HttpMessageHandlerAdapter.BufferError 中的捕捉區塊。</summary>
+      <returns>System.Web.Http.Owin.HttpMessageHandlerAdapter.BufferError 中的捕捉區塊。</returns>
+    </member>
+    <member name="P:System.Web.Http.Owin.OwinExceptionCatchBlocks.HttpMessageHandlerAdapterComputeContentLength">
+      <summary>取得 System.Web.Http.Owin.HttpMessageHandlerAdapter.ComputeContentLength 中的捕捉區塊。</summary>
+      <returns>System.Web.Http.Owin.HttpMessageHandlerAdapter.ComputeContentLength 中的捕捉區塊。</returns>
+    </member>
+    <member name="P:System.Web.Http.Owin.OwinExceptionCatchBlocks.HttpMessageHandlerAdapterStreamContent">
+      <summary>取得 System.Web.Http.Owin.HttpMessageHandlerAdapter.StreamContent 中的捕捉區塊。</summary>
+      <returns>System.Web.Http.Owin.HttpMessageHandlerAdapter.StreamContent 中的捕捉區塊。</returns>
+    </member>
+    <member name="T:System.Web.Http.Owin.PassiveAuthenticationMessageHandler">
+      <summary>表示視所有 OWIN 驗證中介軟體為被動的訊息處理常式。</summary>
+    </member>
+    <member name="M:System.Web.Http.Owin.PassiveAuthenticationMessageHandler.#ctor">
+      <summary>初始化 <see cref="T:System.Web.Http.Owin.PassiveAuthenticationMessageHandler" /> 類別的新執行個體。</summary>
+    </member>
+    <member name="M:System.Web.Http.Owin.PassiveAuthenticationMessageHandler.SendAsync(System.Net.Http.HttpRequestMessage,System.Threading.CancellationToken)">
+      <summary>非同步傳送訊息要求。</summary>
+      <returns>完成非同步作業的工作。</returns>
+      <param name="request">訊息要求。</param>
+      <param name="cancellationToken">取消權杖。</param>
+    </member>
+  </members>
+</doc>
