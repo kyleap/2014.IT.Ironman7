@@ -15,14 +15,15 @@ namespace CMS.Web.Controllers
         // GET: Customer
         public ActionResult Index()
         {
-            // 從Web API取得資料
-            WebClient client = new WebClient();
-            client.Headers["Accept"] = "application/json";
-            string rvl = client.DownloadString(new Uri("http://localhost:58433/api/Customer"));
-            // 將Json字串轉成ViewModel
-            IList<CustomerViewModel> models = JsonConvert.DeserializeObject<IList<CustomerViewModel>>(rvl);
-            // 將ViewModel傳給View使用
-            return View(models);
+            //// 從Web API取得資料 
+            //WebClient client = new WebClient();
+            //client.Headers["Accept"] = "application/json";
+            //string rvl = client.DownloadString(new Uri("http://localhost:58433/api/Customer"));
+            //// 將Json字串轉成ViewModel
+            //IList<CustomerViewModel> models = JsonConvert.DeserializeObject<IList<CustomerViewModel>>(rvl);
+            //// 將ViewModel傳給View使用
+            // return View(models);
+            return View();
         }
     }
 }
