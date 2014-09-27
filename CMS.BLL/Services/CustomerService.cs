@@ -30,6 +30,19 @@ namespace CMS.BLL.Services
             return Mapper.Map<List<Customers>, List<CustomerViewModel>>(DbResult);
         }
 
+        // <summary>取得所有客戶資料(分頁)</summary>
+        /// <returns></returns>
+        public IQueryable<CustomerViewModel> Get(int CurrPage, int PageSize, out int TotalRow)
+        {
+            // 取得所有筆數
+            TotalRow = db.Get().ToList().Count();
+            // 使用Linq篩選分頁
+            var DbResult = db.Get().ToList().Skip((CurrPage - 1) * PageSize).Take(PageSize).ToList();
+            // Mapping到ViewModel
+            Mapper.CreateMap<Customers, CustomerViewModel>();
+            return Mapper.Map<List<Customers>, List<CustomerViewModel>>(DbResult).AsQueryable();
+        }
+
 
     }
 }
