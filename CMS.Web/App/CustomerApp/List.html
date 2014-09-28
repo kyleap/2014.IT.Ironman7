@@ -1,0 +1,27 @@
+﻿<div >
+    <h3><i class="fa fa-table"></i> 客戶資料</h3>
+    <div ng-show="IsLoad" style="text-align:center;">
+        <i class="fa fa-spinner fa-spin fa-3x"></i> 讀取中...
+    </div>
+    <table class="table table-bordered">
+        <tr ng-repeat="Cust in Customers">
+            <td>{{ Cust.CustomerID }}</td>
+            <td>{{ Cust.CompanyName }}</td>
+            <td>{{ Cust.ContactName }}</td>
+        </tr>
+    </table>
+    <pre>目前頁數: {{ currentPage }} 總筆數: {{ totalRecords }}</pre>
+    <pagination boundary-links="true"
+                total-items="totalRecords"
+                ng-model="currentPage"
+                class="pagination-sm"
+                previous-text="上一頁"
+                next-text="下一頁"
+                first-text="第一頁"
+                last-text="最後一頁"
+                ng-change="pageChanged()">
+    </pagination>
+    <div style="color:red;">
+        {{ error }}
+    </div>
+</div>
