@@ -13,6 +13,8 @@ namespace CMS.Web
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            // 建立SignalR hosting
+            app.MapSignalR();
         }
     }
 }

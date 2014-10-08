@@ -51,6 +51,7 @@ namespace CMS.DAL.Repository
         {
             dbSet.Attach(entity);
             context.Entry(entity).State = EntityState.Modified;
+            context.SaveChanges();
         }
 
         /// <summary>刪除某筆資料 by ID</summary>
@@ -59,6 +60,7 @@ namespace CMS.DAL.Repository
         {
             TEntity entityToDelete = dbSet.Find(id);
             Delete(entityToDelete);
+            context.SaveChanges();
         }
 
         /// <summary>刪除某筆資料 by Entity</summary>
@@ -71,14 +73,16 @@ namespace CMS.DAL.Repository
                 dbSet.Attach(entity);
             }
             dbSet.Remove(entity);
+            context.SaveChanges();
         }
 
         /// <summary>新增一筆資料</summary>
         /// <param name="entity"></param>
         public void Insert(TEntity entity)
         {
-            dbSet.Attach(entity);
-            context.Entry(entity).State = EntityState.Modified;
+            dbSet.Add(entity);
+            context.SaveChanges();
         }
+
     }
 }

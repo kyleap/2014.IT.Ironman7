@@ -43,6 +43,41 @@ namespace CMS.BLL.Services
             return Mapper.Map<List<Customers>, List<CustomerViewModel>>(DbResult).AsQueryable();
         }
 
+        /// <summary>取得客戶資訊</summary>
+        /// <param name="CustomerID"></param>
+        /// <returns></returns>
+        public CustomerViewModel Get(string CustomerID)
+        {
+            var DbResult = db.Get().Where(c => c.CustomerID.Trim() == CustomerID.Trim()).FirstOrDefault(); 
+            Mapper.CreateMap<Customers, CustomerViewModel>();
+            return Mapper.Map<Customers, CustomerViewModel>(DbResult);
+        }
+
+        // <summary>新增客戶資料</summary>
+        /// <returns></returns>
+        public void AddCustomer(CustomerViewModel models)
+        {
+            Mapper.CreateMap<CustomerViewModel, Customers>();
+            var cust = Mapper.Map<CustomerViewModel, Customers>(models);
+            db.Insert(cust);
+        }
+
+        /// <summary>儲存客戶資訊</summary>
+        /// <param name="models"></param>
+        public void SaveCustomer(CustomerViewModel models)
+        {
+            Mapper.CreateMap<CustomerViewModel, Customers>();
+            var cust = Mapper.Map<CustomerViewModel, Customers>(models);
+            db.Update(cust);
+        }
+
+        /// <summary>刪除客戶資訊</summary>
+        /// <param name="CustomerID"></param>
+        public void Delete(string CustomerID)
+        {
+            var Customer = db.GetByID(CustomerID);
+            db.Delete(Customer);
+        }
 
     }
 }

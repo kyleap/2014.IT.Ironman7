@@ -19,6 +19,5 @@ namespace CMS.DAL.Interfaces
         void Delete(object id);
         void Delete(TEntity entity);
         void Insert(TEntity entity);
-
     }
 }

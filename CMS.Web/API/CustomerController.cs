@@ -7,7 +7,6 @@ using System.Web.Http;
 using CMS.BLL;
 using CMS.BLL.Services;
 using CMS.Domain.ViewModels;
-using System.Linq;
 
 namespace CMS.Web.API
 {
@@ -59,19 +58,62 @@ namespace CMS.Web.API
             
         }
 
-        // POST: api/Customer
-        public void Post([FromBody]string value)
+        [HttpGet]
+        public HttpResponseMessage Customers(int CustomerID)
         {
+            try
+            {
+                var data = service.Get(CustomerID.ToString());
+                return Request.CreateResponse(HttpStatusCode.OK, data);
+            }
+            catch (Exception ex)
+            {
+                // 發生錯誤，寫入Log，回傳失敗及錯誤訊息
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message.ToString());
+            }
+
+        }
+ 
+        // POST: api/Customer
+        public HttpResponseMessage Post(CustomerViewModel models)
+        {
+            try
+            {
+                service.AddCustomer(models);
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+               return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message.ToString());
+            }
         }
 
         // PUT: api/Customer/5
-        public void Put(int id, [FromBody]string value)
+        public HttpResponseMessage Put(CustomerViewModel models)
         {
+            try
+            {
+                service.SaveCustomer(models);
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message.ToString());
+            }
         }
 
         // DELETE: api/Customer/5
-        public void Delete(int id)
+        public HttpResponseMessage Delete(int id)
         {
+            try
+            {
+                service.Delete(id.ToString());
+                return Request.CreateResponse(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest, ex.Message.ToString());
+            }
         }
     }
 }

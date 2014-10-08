@@ -4,6 +4,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<a href="/Customer" class="btn btn-primary">查詢</a>
-<a href="/Customer/Add" class="btn btn-primary">新增</a>
-<div ng-view></div>
+<h3><i class="fa fa-table"></i> 客戶資料</h3>
+<hr />
+<ul class="nav nav-pills">
+    <li class="active"><a href="/Customer">查詢</a></li>
+    <li class="active"><a href="/Customer/Add">新增客戶</a></li>
+</ul>
+<div ng-view style="margin-top:10px;"></div>

@@ -8,13 +8,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
-    <script src="~/Scripts/angular.min.js"></script>
-    <script src="~/Scripts/angular-route.js"></script>
-    <script src="~/Scripts/angular-resource.min.js"></script>
-    <script src="~/Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
-    <script src="~/App/app.js"></script>
-    <script src="~/App/CustomerApp/customerService.js"></script>
-    <script src="~/App/CustomerApp/customerController.js"></script>
+   @RenderSection("css", required: false)
 </head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <body>
@@ -31,7 +25,10 @@
             <div class="navbar-collapse collapse" id="navbar-main">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="/Custome">客戶管理</a>
+                        <a href="/">訂單狀況</a>
+                    </li>
+                    <li>
+                        <a href="/Customer">客戶管理</a>
                     </li>
                     <li>
                         <a href="/Help/">API</a>
@@ -50,5 +47,20 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>
+    <script src="~/signalr/hubs"></script>
+
+    <script src="~/Scripts/angular.min.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
+    <script src="~/Scripts/angular-resource.min.js"></script>
+    <script src="~/Scripts/angular-ui/ui-bootstrap-tpls.min.js"></script>
+    <script src="~/App/app.js"></script>
+    <script src="~/App/CustomerApp/customerService.js"></script>
+    <script src="~/App/CustomerApp/customerController.js"></script>
+    <script src="~/App/CustomerApp/customerAddController.js"></script>
+    <script src="~/App/CustomerApp/customerEditController.js"></script>
+    <script src="~/App/DashBoardApp/dashBoardService.js"></script>
+    <script src="~/App/DashBoardApp/dsahBoardController.js"></script>
 </body>
 </html>

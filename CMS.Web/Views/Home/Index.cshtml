@@ -1,1 +1,152 @@
-﻿
+﻿@section css
+{
+    <style>
+        .panel > .list-group .list-group-item:first-child {
+            /*border-top: 1px solid rgb(204, 204, 204);*/
+        }
+
+        #back-to-bootsnipp {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+        }
+
+
+        .c-search > .form-control {
+            border-radius: 0px;
+            border-width: 0px;
+            border-bottom-width: 1px;
+            font-size: 1.3em;
+            padding: 12px 12px;
+            height: 44px;
+            outline: none !important;
+        }
+
+            .c-search > .form-control:focus {
+                outline: 0px !important;
+                -webkit-appearance: none;
+                box-shadow: none;
+            }
+
+        .c-search > .input-group-btn .btn {
+            border-radius: 0px;
+            border-width: 0px;
+            border-left-width: 1px;
+            border-bottom-width: 1px;
+            height: 44px;
+        }
+
+
+        .c-list {
+            padding: 0px;
+            min-height: 44px;
+        }
+
+        .title {
+            display: inline-block;
+            font-size: 1.7em;
+            font-weight: bold;
+            padding: 5px 15px;
+        }
+
+        ul.c-controls {
+            list-style: none;
+            margin: 0px;
+            min-height: 44px;
+        }
+
+            ul.c-controls li {
+                margin-top: 8px;
+                float: left;
+            }
+
+                ul.c-controls li a {
+                    font-size: 1.7em;
+                    padding: 11px 10px 6px;
+                }
+
+                    ul.c-controls li a i {
+                        min-width: 24px;
+                        text-align: center;
+                    }
+
+                    ul.c-controls li a:hover {
+                        background-color: rgba(51, 51, 51, 0.2);
+                    }
+
+        .c-toggle {
+            font-size: 1.7em;
+        }
+
+        .name {
+            font-size: 1.7em;
+            font-weight: 700;
+        }
+
+        .c-info {
+            padding: 5px 10px;
+            font-size: 1.25em;
+        }
+        .chat
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.chat li
+{
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dotted #B3A9A9;
+}
+
+.chat li.left .chat-body
+{
+    margin-left: 60px;
+}
+
+.chat li.right .chat-body
+{
+    margin-right: 60px;
+}
+
+
+.chat li .chat-body p
+{
+    margin: 0;
+    color: #777777;
+}
+
+.panel .slidedown .glyphicon, .chat .glyphicon
+{
+    margin-right: 5px;
+}
+
+.panel-body
+{
+    overflow-y: scroll;
+    height: 250px;
+}
+
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar
+{
+    width: 12px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
+}
+
+    </style>
+}
+<div ng-view></div>

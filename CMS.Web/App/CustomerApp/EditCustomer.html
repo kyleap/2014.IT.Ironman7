@@ -1,0 +1,15 @@
+﻿
+<div class="panel panel-default">
+    <div class="panel-body">
+        <div ng-show="IsLoad" style="text-align:center;">
+            <i class="fa fa-spinner fa-spin fa-3x"></i> 讀取中...
+        </div>
+        <label for="CustomerID">客戶編號</label>
+        <input type="text" class="form-control" id="CustomerID" ng-model="Customer.CustomerID">
+        <label for="CompanyName">公司名稱</label>
+        <input type="text" class="form-control" id="CompanyName" ng-model="Customer.CompanyName">
+        <label for="ContactName">聯絡人</label>
+        <input type="text" class="form-control" id="ContactName" ng-model="Customer.ContactName">
+    </div>
+    <input type="button" class="btn btn-primary" value="更新" ng-click="Update()" />
+</div>

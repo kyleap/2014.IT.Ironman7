@@ -1,14 +1,29 @@
-﻿<div >
-    <h3><i class="fa fa-table"></i> 客戶資料</h3>
+﻿<div>
+
     <div ng-show="IsLoad" style="text-align:center;">
         <i class="fa fa-spinner fa-spin fa-3x"></i> 讀取中...
     </div>
     <table class="table table-bordered">
-        <tr ng-repeat="Cust in Customers">
-            <td>{{ Cust.CustomerID }}</td>
-            <td>{{ Cust.CompanyName }}</td>
-            <td>{{ Cust.ContactName }}</td>
-        </tr>
+        <thead>
+            <tr>
+                <td>客戶編號</td>
+                <td>公司名稱</td>
+                <td>聯絡人名稱</td>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="Cust in Customers">
+                <td>{{ Cust.CustomerID }}</td>
+                <td>{{ Cust.CompanyName }}</td>
+                <td>{{ Cust.ContactName }}</td>
+                <td>
+                    <input type="button" class="btn btn-success" value="修改" ng-click="Update(Cust.CustomerID)" />
+                    <input type="button" class="btn btn-danger" value="刪除" ng-click="Delete(Cust)" />
+                </td>
+            </tr>
+        </tbody>
+
     </table>
     <pre>目前頁數: {{ currentPage }} 總筆數: {{ totalRecords }}</pre>
     <pagination boundary-links="true"

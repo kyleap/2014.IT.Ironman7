@@ -28,4 +28,21 @@ MainApp.controller("CustCtrl", function ($scope,$location,$route, CustService) {
 
     GetData();
 
+    // 點選編輯時，移至編輯頁面
+    $scope.Update = function (id) {
+        $location.path('/Customer/Edit/' + id);
+    }
+
+    // 點選刪除時，給Service ID 並呼叫Web API
+    $scope.Delete = function (Cust) {
+        CustService.deleteCustomer(Cust).then(function () {
+            alert('刪除成功!');
+            $scope.currentPage = 1
+            GetData();
+            $scope.IsLoad = false; //讀取完畢,隱藏loading圖示
+        }, function () {
+            alert('刪除失敗!');
+            $scope.IsLoad = false; //讀取完畢,隱藏loading圖示
+        })
+    }
 });
