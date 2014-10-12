@@ -22,5 +22,30 @@ namespace CMS.Web
             // 讓Web API只回傳JSON格式
             GlobalConfiguration.Configuration.Formatters.XmlFormatter.SupportedMediaTypes.Clear();
         }
+
+        protected void Application_BeginRequest(Object sender, EventArgs e)
+        {
+            HttpCookie cLang = Request.Cookies["Lang"];
+
+            if (cLang != null)
+            {
+
+                System.Threading.Thread.CurrentThread.CurrentCulture
+                    = new System.Globalization.CultureInfo(cLang.Value);
+                System.Threading.Thread.CurrentThread.CurrentUICulture
+                    = new System.Globalization.CultureInfo(cLang.Value);
+            }
+            else
+            {
+                // 如果判斷不出來，預設就改為簡體中文網站吧
+                cLang = new HttpCookie("Lang");
+                cLang.Value = "zh-CN";
+                System.Threading.Thread.CurrentThread.CurrentCulture
+                   = new System.Globalization.CultureInfo(cLang.Value);
+                System.Threading.Thread.CurrentThread.CurrentUICulture
+                    = new System.Globalization.CultureInfo(cLang.Value);
+            }
+        }
+
     }
 }

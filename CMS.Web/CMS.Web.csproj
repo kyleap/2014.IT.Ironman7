@@ -212,6 +212,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LanguageController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -1065,6 +1066,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Scripts\version.json" />
+    <Content Include="Views\Language\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1086,6 +1088,10 @@
     <ProjectReference Include="..\CMS.Domain\CMS.Domain.csproj">
       <Project>{48cb1e5b-2423-4daf-b8d1-73ece50cd5c7}</Project>
       <Name>CMS.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CMS.Language\CMS.Language.csproj">
+      <Project>{83941543-a489-4a59-8cd2-033c40232f47}</Project>
+      <Name>CMS.Language</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

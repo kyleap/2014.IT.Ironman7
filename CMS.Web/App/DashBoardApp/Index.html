@@ -1,5 +1,4 @@
 ﻿
-<button ng-click="getHubHello()">Get Hub Hello</button>
 <span >{{ CurrTime }}</span>
 <div class="container">
     <h3><i class="fa fa-table"></i> 今日訂單狀況</h3>
@@ -31,7 +30,7 @@
                             <img src="http://api.randomuser.me/portraits/men/49.jpg" alt="Scott Stevens" class="img-responsive img-circle" />
                         </div>
                         <div class="col-xs-12 col-sm-9">
-                            <span class="name">{{ data.EmployeeName }})</span><br />
+                            <span class="name">{{ data.EmployeeName }}</span><br />
                             <span>職位 : {{ data.Title }}</span><br />
                             <span class="glyphicon glyphicon-map-marker text-muted c-info" data-toggle="tooltip" title="5842 Hillcrest Rd"></span>
                             <span class="visible-xs"> <span class="text-muted">5842 Hillcrest Rd</span><br /></span>
@@ -126,6 +125,12 @@
                         </div>
                     </div>
                 </div>
+            </div>
+
+            <div>
+                <ul>
+                    <li ng-repeat="t in test">{{ t.ContactName }}</li>
+                </ul>
             </div>
 
         </div>

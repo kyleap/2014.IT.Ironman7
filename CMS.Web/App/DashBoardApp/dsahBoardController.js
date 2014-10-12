@@ -3,6 +3,7 @@
 MainApp.controller("DashBoardCtrl", function ($scope, $location, $route, DashBoardService, $window) {
     $scope.IsLoad = true; //預設讀取中
     $scope.Msg = '';
+    $scope.test = [];
 
     DashBoardService.getData().then(function (response) {
         $scope.Datas = response;
@@ -32,12 +33,22 @@ MainApp.controller("DashBoardCtrl", function ($scope, $location, $route, DashBoa
         $scope.$apply();
     });
 
+    proxy.on('custData', function (data) {
+        $scope.test = data;
+        //console.log($scope.test);
+        $scope.$apply();
+    });
+
     // 發送訊息至Server Hub
-    hub.start();
+    hub.start().done(function () {
+        proxy.invoke('cust');
+    });
+   
 
     $scope.SendMessage = function () {
         // 當點選Send按鈕的時候，發送輸入的訊息
         proxy.invoke('send', "Kyle", $scope.Msg)
+        
     };
 
 });
