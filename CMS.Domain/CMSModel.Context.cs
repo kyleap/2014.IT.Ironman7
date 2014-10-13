@@ -12,6 +12,8 @@ namespace CMS.Domain
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class NorthwindEntities : DbContext
     {
@@ -28,5 +30,10 @@ namespace CMS.Domain
         public virtual DbSet<Customers> Customers { get; set; }
         public virtual DbSet<Employees> Employees { get; set; }
         public virtual DbSet<Orders> Orders { get; set; }
+    
+        public virtual ObjectResult<sp_Customer_Orders_Result> sp_Customer_Orders()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Customer_Orders_Result>("sp_Customer_Orders");
+        }
     }
 }
