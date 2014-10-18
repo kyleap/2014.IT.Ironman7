@@ -1,8 +1,43 @@
-﻿
+﻿@model List<CMS.Domain.sp_Customer_Orders_Result>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>報表資料</h2>
+<div style="text-align:right;">
+    <div style="text-align:right;">
+        <a class="btn btn-xs btn-success" href="/Order/Export?type=Excel">
+            <i class="fa fa-file-excel-o fa"></i> Excel
+        </a>
+        <a class="btn btn-xs btn-danger" href="/Order/Export?type=pdf">
+            <i class="fa fa-file-pdf-o fa"></i> PDF
+        </a>
+        <a class="btn btn-xs btn-info" href="/Order/Export?type=word">
+            <i class="fa fa-file-word-o fa"></i> Word
+        </a>
+    </div>
+</div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>訂單編號</td>
+            <td>訂單日期</td>
+            <td>客戶編號</td>
+            <td>聯絡人</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.OrderID</td>
+                <td>@item.OrderDate</td>
+                <td>@item.CustomerID</td>
+                <td>@item.ContactName</td>
+            </tr>
+        }
+    </tbody>
+</table>
 
