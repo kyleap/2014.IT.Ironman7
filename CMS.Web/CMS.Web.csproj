@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DocX">
+      <HintPath>..\packages\DocX.1.0.0.13\lib\net40\DocX.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.SignalR.Core">
       <HintPath>..\packages\Microsoft.AspNet.SignalR.Core.2.1.2\lib\net45\Microsoft.AspNet.SignalR.Core.dll</HintPath>
     </Reference>
@@ -1097,6 +1100,7 @@
     <Content Include="Scripts\version.json" />
     <Content Include="Views\Language\Index.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Templates\TestTemplate.docx" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

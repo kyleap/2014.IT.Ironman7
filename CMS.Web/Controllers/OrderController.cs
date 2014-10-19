@@ -1,5 +1,6 @@
 ﻿using CMS.BLL.Services;
 using Microsoft.Reporting.WebForms;
+using Novacode;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -63,6 +64,20 @@ namespace CMS.Web.Controllers
 
             // 回傳檔案
             return File(renderedBytes, mimeType, "Report");
+        }
+
+        public ActionResult ExportByDocx()
+        {
+            // 樣板路徑
+            string TemplatePath = Server.MapPath("~/Templates/TestTemplate.docx");
+            // 儲存路徑
+            string SavePath = @"D:/test.docx";
+            DocX document = DocX.Load(TemplatePath);
+            document.ReplaceText("{{OrderNumber}}", "555555");
+            document.ReplaceText("{{Name}}", "Kyle");
+            document.ReplaceText("{{CurrTime}}", DateTime.Now.ToShortTimeString());
+            document.SaveAs(SavePath);
+            return File(SavePath, "application/docx", "Report.docx");
         }
     }
 }
