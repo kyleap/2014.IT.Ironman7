@@ -1,0 +1,25 @@
+﻿
+@{
+    ViewBag.Title = "UploadOrder";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>批次上傳</h2>
+
+<a href="~/Templates/UploadTemplete.xlsx">下載批示上傳Excel格式</a>
+<br />
+<br />
+
+@using (Html.BeginForm("UploadOrder", "Order", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <input type="file" id="UploadFile" name="UploadFile" accept=".xlsx" multiple />
+    <br />
+    <br />
+    <input type="submit" class="btn btn-primary" value="上傳" />
+
+    if (ViewBag.Error != null)
+    {
+        <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+    }
+}
+
