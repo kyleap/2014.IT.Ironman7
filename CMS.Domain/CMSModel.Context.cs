@@ -35,5 +35,10 @@ namespace CMS.Domain
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Customer_Orders_Result>("sp_Customer_Orders");
         }
+    
+        public virtual ObjectResult<sp_Permission_GetMenuList_Result> sp_Permission_GetMenuList()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_Permission_GetMenuList_Result>("sp_Permission_GetMenuList");
+        }
     }
 }

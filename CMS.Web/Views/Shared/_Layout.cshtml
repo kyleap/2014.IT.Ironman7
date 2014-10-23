@@ -8,7 +8,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
-   @RenderSection("css", required: false)
+    @RenderSection("css", required: false)
 </head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <body>
@@ -54,6 +54,13 @@
                         </ul>
                     </li>
                 </ul>
+
+                @Html.MvcSiteMap().Menu("BootstrapMenuHelperModel", false)
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="/Login/LogOut">登出</a></li>
+                </ul>
+
             </div>
         </div>
     </div>

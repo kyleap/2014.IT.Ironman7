@@ -100,6 +100,7 @@
           </ReferentialConstraint>
         </Association>
         <Function Name="sp_Customer_Orders" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="sp_Permission_GetMenuList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="NorthwindModelStoreContainer">
           <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
@@ -238,12 +239,27 @@
             <End Role="Orders" EntitySet="Orders" />
           </AssociationSet>
           <FunctionImport Name="sp_Customer_Orders" ReturnType="Collection(NorthwindModel.sp_Customer_Orders_Result)" />
+          <FunctionImport Name="sp_Permission_GetMenuList" ReturnType="Collection(NorthwindModel.sp_Permission_GetMenuList_Result)" />
         </EntityContainer>
         <ComplexType Name="sp_Customer_Orders_Result">
           <Property Type="Int32" Name="OrderID" Nullable="false" />
           <Property Type="DateTime" Name="OrderDate" Nullable="true" Precision="23" />
           <Property Type="String" Name="CustomerID" Nullable="false" MaxLength="5" />
           <Property Type="String" Name="ContactName" Nullable="true" MaxLength="30" />
+        </ComplexType>
+        <ComplexType Name="sp_Permission_GetMenuList_Result">
+          <Property Type="Int32" Name="MenuID" Nullable="false" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="20" />
+          <Property Type="String" Name="Controller" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Action" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Url" Nullable="true" MaxLength="60" />
+          <Property Type="String" Name="Description" Nullable="true" MaxLength="40" />
+          <Property Type="Int32" Name="ParentID" Nullable="true" />
+          <Property Type="Int32" Name="Status" Nullable="false" />
+          <Property Type="Int32" Name="EntryBy" Nullable="true" />
+          <Property Type="DateTime" Name="EntryDatetime" Nullable="true" Precision="23" />
+          <Property Type="Int32" Name="OrderSerial" Nullable="true" />
+          <Property Type="String" Name="Roles" Nullable="false" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -319,6 +335,24 @@
                 <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
                 <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
                 <ScalarProperty Name="ContactName" ColumnName="ContactName" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_Permission_GetMenuList" FunctionName="NorthwindModel.Store.sp_Permission_GetMenuList">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="NorthwindModel.sp_Permission_GetMenuList_Result">
+                <ScalarProperty Name="MenuID" ColumnName="MenuID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Controller" ColumnName="Controller" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="EntryBy" ColumnName="EntryBy" />
+                <ScalarProperty Name="EntryDatetime" ColumnName="EntryDatetime" />
+                <ScalarProperty Name="OrderSerial" ColumnName="OrderSerial" />
+                <ScalarProperty Name="Roles" ColumnName="Roles" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
